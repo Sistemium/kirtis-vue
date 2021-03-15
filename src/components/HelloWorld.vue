@@ -22,6 +22,8 @@ export default {
 </script>
 <style scoped lang="scss">
 
+@import "../styles/variables";
+
 h3 {
   margin: 40px 0 0;
 }
@@ -37,7 +39,7 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: $green;
 }
 
 </style>

@@ -1,0 +1,46 @@
+$black: #2c3e50;
+$gray: #606266;
+$dark-gray: darken($gray, 20%);
+$light-gray: lighten($gray, 10%);
+$gray-background: rgb(249, 244, 246);
+$gray-border-color: #dddddd;
+$table-border-color: #b0b0b0;
+
+$blue: #26a2ff;
+$primary-color: $blue;
+$primary-hover-color: #66b1ff;
+$white: beige;
+
+$small-font-size: 13px;
+$font-size-print: 10px;
+$font-size-large-print: 9px;
+$font-size-x-large-print: 15px;
+$small-font-size-print: 8.5px;
+
+$red: red;
+$green: #42b983;
+$light-green: lighten($green, 25%);
+
+$orange: rgb(199, 53, 44);
+$orange: rgb(239, 65, 54);
+$orange: rgb(116, 178, 59);
+
+$icon-button-width: 40px;
+
+$margin-right: 7px;
+$margin-top: 14px;
+$margin-top-print: 5px;
+$margin-top-small: 6px;
+$margin-top-small-print: 2.4px;
+$margin: 30px;
+
+$padding: 5px;
+$padding-print: 2.25px 4px;
+
+$border-radius: 6px;
+$list-cell-borders: solid 1px $gray-border-color;
+
+%list-cell-bordered {
+  border-top: $list-cell-borders;
+  border-bottom: $list-cell-borders;
+}
