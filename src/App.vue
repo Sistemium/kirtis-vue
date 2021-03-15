@@ -5,6 +5,8 @@
   #nav
     router-link(to="/") Home
     = ' | '
+    router-link(to="/krc") Kirtis
+    = ' | '
     router-link(to="/about") About
 
   router-view
