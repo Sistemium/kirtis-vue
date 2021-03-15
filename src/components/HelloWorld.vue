@@ -2,7 +2,7 @@
 
 .hello
   h1 {{ msg }}
-  p For a guide and recipes on how to configure / customize this project,
+  p This is refactored project written in VueJS,
     br
     | check out the
     = ' '
@@ -24,8 +24,8 @@ export default {
 
 @import "../styles/variables";
 
-h3 {
-  margin: 40px 0 0;
+h1 {
+  margin: 20px 0 0;
 }
 
 ul {
