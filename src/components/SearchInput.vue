@@ -2,14 +2,15 @@
 
 el-autocomplete.search-input(
   ref="input"
-  prefix-icon="el-icon-search"
+  :prefix-icon="prefixIcon"
   v-model="searchText"
   :clearable="true"
   :placeholder="placeholder"
   :size="size"
-  :fetch-suggestions="onFetchSuggestions"
+  :fetch-suggestions="fetchSuggestions"
   @select="onSelect"
   :trigger-on-focus="false"
+  :debounce="debounce"
 )
 
 </template>
@@ -26,6 +27,10 @@ export default {
       type: String,
       default: 'normal',
     },
+    prefixIcon: {
+      type: String,
+      default: 'el-icon-search',
+    },
     value: String,
     placeholder: {
       default: 'paieška',
@@ -33,7 +38,7 @@ export default {
     },
     debounce: {
       type: Number,
-      default: 500,
+      default: 600,
     },
     fetchSuggestions: {
       type: Function,

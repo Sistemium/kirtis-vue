@@ -10,10 +10,10 @@ export async function accent(word) {
     return null;
   }
 
-  const res = await axios.get(`${API_URL}/${word}`)
-    .catch(() => ({
-      data: [],
-    }));
+  const res = await axios.get(`${API_URL}/${word}`);
+  // .catch(() => ({
+  //   data: null,
+  // }));
 
   return map(res.data, result => ({
     ...result,

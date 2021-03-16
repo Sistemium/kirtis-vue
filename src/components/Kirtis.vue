@@ -8,16 +8,25 @@ form.kirtis()
     ref="inputWord"
     placeholder="Sukirčiuoti žodį"
     :fetch-suggestions="querySearch"
+    :prefix-icon="inputIcon"
   )
 
   el-button(@click="onSubmit" type="primary" native-type="submit") Kirčiuoti
 
   resize(:padding="0")
-    accentuation-results(:results="results")
+    accentuation-results(v-if="results" :results="results")
+    el-alert(
+      type="error"
+      v-if="error"
+      show-icon
+    )
+      template(slot="title")
+        span(v-html="error")
 
 </template>
 <script>
 
+import trim from 'lodash/trim';
 import SearchInput from '@/components/SearchInput.vue';
 import AccentuationResults from '@/components/AccentuationResults.vue';
 
@@ -43,12 +52,32 @@ export default {
       return false;
     },
 
-    async doKirtis(word = this.word) {
+    async doKirtis(input) {
+
+      const word = trim(input || this.word);
+
+      this.error = null;
+
       if (!word) {
         this.results = [];
         return;
       }
-      this.results = await kirtis.accent(word);
+
+      this.busy = true;
+
+      try {
+        this.results = await kirtis.accent(word);
+      } catch (e) {
+
+        // TODO: error reporting UI
+        this.$error(e.message);
+        this.results = null;
+        this.error = `Žodis <strong>${word}</strong> nerastas`;
+
+      }
+
+      this.busy = false;
+
     },
 
     querySearch(queryString, cb) {
@@ -59,10 +88,18 @@ export default {
 
   },
 
+  computed: {
+    inputIcon() {
+      return this.busy ? 'el-icon-loading' : 'el-icon-search';
+    },
+  },
+
   data() {
     return {
       word: '',
       results: [],
+      busy: false,
+      error: null,
     };
   },
 
@@ -102,9 +139,9 @@ export default {
 
 }
 
-.kirtis {
-  margin: 0 auto;
-  //max-width: 500px;
+.el-alert {
+  margin: $margin-top auto;
+  max-width: 300px;
 }
 
 </style>
