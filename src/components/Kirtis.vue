@@ -102,4 +102,9 @@ export default {
 
 }
 
+.kirtis {
+  margin: 0 auto;
+  //max-width: 500px;
+}
+
 </style>
