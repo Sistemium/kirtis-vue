@@ -11,6 +11,7 @@ el-autocomplete.search-input(
   @select="onSelect"
   :trigger-on-focus="false"
   :debounce="debounce"
+  @keydown.esc.native="onEscape"
 )
 
 </template>
@@ -49,6 +50,10 @@ export default {
   },
 
   methods: {
+
+    onEscape() {
+      this.$refs.input.close();
+    },
 
     onSelect() {
       this.$nextTick(() => {
