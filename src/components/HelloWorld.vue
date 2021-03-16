@@ -2,12 +2,9 @@
 
 .hello
   h1 {{ msg }}
-  p This is refactored project written in VueJS,
-    br
-    | check out the
+  p This project is written in
     = ' '
-    a(href="https://cli.vuejs.org" target="_blank" rel="noopener") vue-cli documentation
-    | .
+    a(href="https://vuejs.org" target="_blank" rel="noopener") VueJS
 
 </template>
 <script>

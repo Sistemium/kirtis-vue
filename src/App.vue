@@ -1,33 +1,21 @@
 <template lang="pug">
 
 #app
-
-  #nav
-    router-link(to="/") Home
-    = ' | '
-    router-link(to="/krc") Kirtis
-    = ' | '
-    router-link(to="/about") About
-
+  app-menu
   router-view
 
 </template>
+<script>
 
+import AppMenu from '@/components/AppMenu.vue';
+
+export default {
+  components: { AppMenu },
+};
+
+</script>
 <style lang="scss" scoped>
 
 @import "./styles/variables";
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: $black;
-
-    &.router-link-exact-active {
-      color: $green;
-    }
-  }
-}
 
 </style>
