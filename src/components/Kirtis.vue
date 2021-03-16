@@ -12,7 +12,12 @@ form.kirtis()
     :debounce="400"
   )
 
-  el-button(@click="onSubmit" type="primary" native-type="submit") Kirčiuoti
+  el-button(
+    @click="onSubmit"
+    type="primary"
+    native-type="submit"
+    :disabled="!word"
+  ) Kirčiuoti
 
   resize(:padding="0")
     accentuation-results(v-if="results" :results="results")
