@@ -44,3 +44,5 @@ $list-cell-borders: solid 1px $gray-border-color;
   border-top: $list-cell-borders;
   border-bottom: $list-cell-borders;
 }
+
+@import "../../node_modules/sistemium-vue/styles/responsive";

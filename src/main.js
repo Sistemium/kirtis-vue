@@ -2,8 +2,10 @@ import Vue from 'vue';
 
 import './lib/element-ui';
 import './lib/debug';
+import './lib/sistemium';
 
 import './index.scss';
+import 'sistemium-vue/styles/responsive.scss';
 import './registerServiceWorker';
 
 import router from './router';
