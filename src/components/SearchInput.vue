@@ -7,8 +7,9 @@ el-autocomplete.search-input(
   :clearable="true"
   :placeholder="placeholder"
   :size="size"
-  :fetch-suggestions="fetchSuggestions"
+  :fetch-suggestions="onFetchSuggestions"
   @select="onSelect"
+  :trigger-on-focus="false"
 )
 
 </template>
@@ -50,6 +51,14 @@ export default {
       this.$nextTick(() => {
         this.$emit('select', this.searchText);
       });
+    },
+
+  },
+
+  computed: {
+
+    onFetchSuggestions() {
+      return debounce(this.fetchSuggestions, this.debounce);
     },
 
   },
