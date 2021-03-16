@@ -78,6 +78,7 @@ export default {
 
       try {
         this.results = await kirtis.accent(word);
+        this.focusInput();
       } catch (e) {
 
         // TODO: error reporting UI
@@ -100,6 +101,13 @@ export default {
         .catch(e => this.$error('querySearch', e));
     },
 
+    focusInput() {
+      const { inputWord } = this.$refs;
+      if (inputWord) {
+        this.$nextTick(() => inputWord.$refs.input.focus());
+      }
+    },
+
   },
 
   computed: {
@@ -118,10 +126,7 @@ export default {
   },
 
   mounted() {
-    const { inputWord } = this.$refs;
-    if (inputWord) {
-      this.$nextTick(() => inputWord.$refs.input.focus());
-    }
+    this.focusInput();
   },
 
 };

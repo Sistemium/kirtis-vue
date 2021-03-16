@@ -50,4 +50,8 @@ export default {
   }
 }
 
+.el-tag {
+  font-size: 13px;
+}
+
 </style>
