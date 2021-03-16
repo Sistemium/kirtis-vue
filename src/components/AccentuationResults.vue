@@ -45,6 +45,9 @@ export default {
 
 .state, .class {
   margin: $margin-right;
+  @include responsive-only(xxs) {
+    margin: $margin-right/2;
+  }
 }
 
 </style>

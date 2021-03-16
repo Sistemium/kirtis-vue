@@ -12,7 +12,8 @@ form.kirtis()
 
   el-button(@click="onSubmit" type="primary" native-type="submit") Kirčiuoti
 
-  accentuation-results(:results="results")
+  resize(:padding="0")
+    accentuation-results(:results="results")
 
 </template>
 <script>
@@ -75,12 +76,30 @@ export default {
 };
 
 </script>
+
 <style scoped lang="scss">
 
 @import "../styles/variables";
 
 .el-button {
   margin-left: $margin-right;
+}
+
+@include responsive-only(xxs) {
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 $margin-top;
+    height: 100%;
+  }
+
+  .el-button {
+    width: 100%;
+    //display: block;
+    margin: $margin-right auto;
+  }
+
 }
 
 </style>
