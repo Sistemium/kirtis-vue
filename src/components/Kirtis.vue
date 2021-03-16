@@ -10,6 +10,7 @@ form.kirtis()
     :fetch-suggestions="querySearch"
     :prefix-icon="inputIcon"
     :debounce="400"
+    @clear="onClear"
   )
 
   el-button(
@@ -61,6 +62,11 @@ export default {
           });
         });
       return false;
+    },
+
+    onClear() {
+      this.results = null;
+      this.error = null;
     },
 
     async doKirtis(input) {

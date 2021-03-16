@@ -12,6 +12,7 @@ el-autocomplete.search-input(
   :trigger-on-focus="false"
   :debounce="debounce"
   @keydown.esc.native="onEscape"
+  @clear="$emit('clear')"
 )
 
 </template>
@@ -59,6 +60,10 @@ export default {
       this.$nextTick(() => {
         this.$emit('select', this.searchText);
       });
+    },
+
+    blur() {
+      this.$refs.input.$refs.input.blur();
     },
 
   },
