@@ -9,6 +9,7 @@ form.kirtis()
     placeholder="Sukirčiuoti žodį"
     :fetch-suggestions="querySearch"
     :prefix-icon="inputIcon"
+    :debounce="600"
   )
 
   el-button(@click="onSubmit" type="primary" native-type="submit") Kirčiuoti
@@ -47,6 +48,7 @@ export default {
 
     onSubmit(e) {
       e.preventDefault();
+      this.$refs.inputWord.$refs.input.close();
       this.doKirtis();
       e.returnValue = false;
       return false;
@@ -83,6 +85,9 @@ export default {
     querySearch(queryString, cb) {
       kirtis.suggestion(queryString)
         .then(cb)
+        .then(() => {
+          this.$refs.inputWord.$refs.input.activated = true;
+        })
         .catch(e => this.$error('querySearch', e));
     },
 

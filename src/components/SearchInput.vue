@@ -16,8 +16,6 @@ el-autocomplete.search-input(
 </template>
 <script>
 
-import debounce from 'lodash/debounce';
-
 export default {
 
   name: 'SearchInput',
@@ -60,16 +58,8 @@ export default {
 
   },
 
-  computed: {
-
-    onFetchSuggestions() {
-      return debounce(this.fetchSuggestions, this.debounce);
-    },
-
-  },
-
   created() {
-    this.$watch('searchText', debounce(value => this.$emit('input', value), this.debounce));
+    this.$watch('searchText', value => this.$emit('input', value));
   },
 
 };
