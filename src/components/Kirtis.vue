@@ -21,11 +21,12 @@ form.kirtis()
   ) Kirčiuoti
 
   resize(:padding="0")
-    accentuation-results(v-if="results" :results="results")
+    accentuation-results(:results="results" v-if="results && results.length")
     el-alert(
       type="error"
       v-if="error"
       show-icon
+      @close="onCloseError"
     )
       template(slot="title")
         span(v-html="error")
@@ -48,6 +49,12 @@ export default {
   components: {
     AccentuationResults,
     SearchInput,
+  },
+
+  watch: {
+    results(input) {
+      this.$emit('input', input);
+    },
   },
 
   methods: {
@@ -152,7 +159,7 @@ export default {
   form {
     display: flex;
     flex-direction: column;
-    padding: 0 $margin-top;
+    padding: 0 $margin-right;
     height: 100%;
   }
 
@@ -165,12 +172,12 @@ export default {
 }
 
 .el-alert {
-  margin: 15px auto;
+  margin: $margin-top auto;
   max-width: 300px;
 }
 
-.stm-resize {
-  margin-top: 15px;
+.stm-resize > * {
+  margin-top: $margin-top;
 }
 
 </style>

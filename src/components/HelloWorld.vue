@@ -1,8 +1,10 @@
 <template lang="pug">
 
-.hello
+.hello-world
 
-  h1 {{ msg }}
+  img(alt="Vue logo" src="../assets/kirtis-180.png")
+
+  h1(v-if="msg") {{ msg }}
 
   p This
     = ' '
@@ -36,7 +38,7 @@ export default {
 @import "../styles/variables";
 
 h1 {
-  margin: 20px 0 0;
+  margin: $margin-top 0 0;
 }
 
 ul {
@@ -46,7 +48,7 @@ ul {
 
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 $margin-right;
 }
 
 a {

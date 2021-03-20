@@ -21,21 +21,16 @@ $red: red;
 $green: #42b983;
 $light-green: lighten($green, 25%);
 
-$orange: rgb(199, 53, 44);
 $orange: rgb(239, 65, 54);
-$orange: rgb(116, 178, 59);
 
 $icon-button-width: 40px;
 
-$margin-right: 7px;
-$margin-top: 14px;
-$margin-top-print: 5px;
-$margin-top-small: 6px;
-$margin-top-small-print: 2.4px;
+$margin-right: 10px;
+
+$margin-top: 20px;
 $margin: 30px;
 
-$padding: 5px;
-$padding-print: 2.25px 4px;
+$padding: 6px;
 
 $border-radius: 6px;
 $list-cell-borders: solid 1px $gray-border-color;
