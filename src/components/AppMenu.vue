@@ -3,9 +3,8 @@
 .app-menu
 
   //router-link(to="/") Home
-  //= ' | '
   router-link(to="/") Kirtis
-  = ' | '
+  span
   router-link(to="/about") Apie
 
 </template>
@@ -24,7 +23,8 @@ export default {
 
 .app-menu {
 
-  padding: 30px;
+  padding: $margin-top;
+  font-size: 24px;
 
   a {
     font-weight: bold;
@@ -35,6 +35,11 @@ export default {
     }
   }
 
+}
+
+span:before {
+  content: "|";
+  margin: 0 $margin-right;
 }
 
 </style>
