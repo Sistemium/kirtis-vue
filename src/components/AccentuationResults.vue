@@ -4,30 +4,32 @@
 
   .result(v-for="result in results" :key="result.id")
 
-    strong.word {{ result.word }}
+    .word
+      strong {{ result.word }}
+      tip-tag.class(
+        v-if="result.class"
+        :tag="result.class"
+        type="info"
+        effect="plain"
+      )
 
     .states
 
-      el-tag.class(
-        v-if="result.class"
-        size="small"
-        type="success"
-      ) {{ result.class }}
-
-      el-tag.state(
+      tip-tag.state(
         v-for="item in result.state" :key="item"
-        size="small"
-        type=""
-      ) {{ item }}
+        :tag="item"
+      )
 
 </template>
 <script>
+
+import TipTag from '@/components/TipTag.vue';
 
 const NAME = 'AccentuationResults';
 
 export default {
   name: NAME,
-
+  components: { TipTag },
   props: {
     results: Array,
   },
