@@ -5,7 +5,8 @@ module.exports = {
   publicPath: '',
 
   transpileDependencies: [
-    // 'sistemium-vue',
+    'sistemium-vue',
+    'sistemium-debug',
   ],
 
   productionSourceMap: false,
