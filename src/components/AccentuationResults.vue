@@ -9,6 +9,7 @@
       tip-tag.class(
         v-if="result.class"
         :tag="result.class"
+        :tip="shorteningValue(result.class)"
         type="info"
         effect="plain"
       )
@@ -18,12 +19,15 @@
       tip-tag.state(
         v-for="item in result.state" :key="item"
         :tag="item"
+        :tip="shorteningValue(item)"
       )
 
 </template>
 <script>
 
 import TipTag from '@/components/TipTag.vue';
+import { mapGetters } from 'vuex';
+import { SHORTENING_VALUE } from '@/store/kirtis/getters';
 
 const NAME = 'AccentuationResults';
 
@@ -32,6 +36,14 @@ export default {
   components: { TipTag },
   props: {
     results: Array,
+  },
+
+  computed: {
+
+    ...mapGetters({
+      shorteningValue: SHORTENING_VALUE,
+    }),
+
   },
 
 };

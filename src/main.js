@@ -18,4 +18,8 @@ new Vue({
   router,
   store,
   render: h => h(App),
+  created() {
+    store.dispatch('loadShortenings')
+      .catch(e => this.$error(e));
+  },
 }).$mount('#app');

@@ -1,6 +1,6 @@
 <template lang="pug">
 
-el-tooltip.tip-tag(:content="tag || tip")
+el-tooltip.tip-tag(:content="tip || tag")
   el-tag(size="small" :type="type" :effect="effect") {{ tag }}
 
 </template>
