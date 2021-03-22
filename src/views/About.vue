@@ -1,7 +1,7 @@
 <template lang="pug">
 
 .about
-  hello-world(msg="Welcome to Kirtis.info")
+  hello-world(msg="Sveiki atvykę į Kirtis.info")
   app-info
 
 </template>

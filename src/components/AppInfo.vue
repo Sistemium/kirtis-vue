@@ -1,21 +1,24 @@
 <template lang="pug">
 
 .app-info
-  p This
+  // atviro kodo programą su „VueJS“ parašė UAB „Sistemium“, naudodama VDU KLC technologiją
+  p Šią
     = ' '
-    a(href="https://github.com/Sistemium/kirtis-vue" target="_blank") open-source
+    a(href="https://github.com/Sistemium/kirtis-vue" target="_blank") atviro kodo
     = ' '
-    | app is written in
+    | programą su
     = ' '
     a(href="https://vuejs.org" target="_blank") VueJS
     = ' '
-    | by
+    | parašė
     = ' '
     a(href="https://sistemium.com" target="_blank") Sistemium UAB
     = ' '
-    | courtesy of
+    | naudodama
     = ' '
     a(href="https://klc.vdu.lt" target="_blank") VDU KLC
+    = ' '
+    | technologiją.
 
 </template>
 <script>
