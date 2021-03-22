@@ -166,7 +166,7 @@ export default {
   .el-button {
     width: 100%;
     //display: block;
-    margin: $margin-right auto;
+    margin: $margin-right auto 0;
   }
 
 }

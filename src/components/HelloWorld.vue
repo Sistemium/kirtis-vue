@@ -25,6 +25,10 @@ h1 {
   margin: $margin-top auto;
 }
 
+img {
+  margin: 10px auto;
+}
+
 h1 {
   font-size: 30px;
 }
