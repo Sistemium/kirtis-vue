@@ -3,6 +3,8 @@
 .home
   kirtis
   hello-world(v-if="!results && !error" msg="Kirčiavimas internetu")
+  footer
+    small &copy; Sistemium UAB
 
 </template>
 
@@ -36,6 +38,14 @@ export default {
 
 .hello-world {
   margin-top: $margin-top + 10px;
+}
+
+small {
+  color: $gray;
+}
+
+footer {
+  margin: $margin-top auto;
 }
 
 </style>

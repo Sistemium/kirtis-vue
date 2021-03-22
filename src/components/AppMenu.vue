@@ -25,13 +25,13 @@ export default {
 
   padding: $margin-top;
   font-size: 24px;
+  font-weight: 500;
 
   a {
-    font-weight: bold;
-    color: $black;
+    color: $light-gray;
 
     &.router-link-exact-active {
-      color: $green;
+      color: $dark-gray;
     }
   }
 
@@ -40,6 +40,7 @@ export default {
 span:before {
   content: "|";
   margin: 0 $margin-right;
+  color: $light-gray;
 }
 
 </style>
