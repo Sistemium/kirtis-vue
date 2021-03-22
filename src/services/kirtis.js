@@ -36,9 +36,12 @@ export async function suggestion(word) {
 
 }
 
+function shortMapper(label) {
+  return (name, id) => (isObject(name) ? map(name, shortMapper(id)) : { id, name, label });
+}
+
 export async function shortenings() {
   const { data } = await axios.get('api/strp');
-  const mapper = (name, id) => (isObject(name) ? map(name, mapper) : { id, name });
-  const res = map(data, mapper);
+  const res = map(data, shortMapper());
   return flattenDeep(res);
 }

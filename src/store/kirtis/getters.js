@@ -10,7 +10,7 @@ export default {
   [SHORTENING_VALUE](state, getters) {
     return id => {
       const item = getters[SHORTENINGS][id];
-      return item && item.name;
+      return item && `${item.label}: ${item.name}`;
     };
   },
 
