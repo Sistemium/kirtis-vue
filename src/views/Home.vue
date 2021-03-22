@@ -2,7 +2,7 @@
 
 .home
   kirtis(ref="kirtis" @input="onResults")
-  hello-world(v-if="!results")
+  hello-world(v-if="!results" msg="Kirčiavimas internetu")
 
 </template>
 
