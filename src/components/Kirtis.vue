@@ -10,7 +10,7 @@ form.kirtis()
     :fetch-suggestions="querySearch"
     :prefix-icon="inputIcon"
     :debounce="400"
-    @clear="onClear"
+    @clear="clearResults"
   )
 
   el-button(
@@ -26,7 +26,7 @@ form.kirtis()
       type="error"
       v-if="error"
       show-icon
-      @close="onCloseError"
+      @close="clearResults"
     )
       template(slot="title")
         span(v-html="error")
@@ -34,11 +34,14 @@ form.kirtis()
 </template>
 <script>
 
+import { mapActions, mapGetters } from 'vuex';
 import trim from 'lodash/trim';
 import SearchInput from '@/components/SearchInput.vue';
 import AccentuationResults from '@/components/AccentuationResults.vue';
-
 import * as kirtis from '@/services/kirtis';
+
+import * as a from '@/store/kirtis/actions';
+import * as g from '@/store/kirtis/getters';
 
 const NAME = 'Kirtis';
 
@@ -51,13 +54,12 @@ export default {
     SearchInput,
   },
 
-  watch: {
-    results(input) {
-      this.$emit('input', input);
-    },
-  },
-
   methods: {
+
+    ...mapActions({
+      accentuateWord: a.ACCENTUATE_WORD,
+      clearResults: a.CLEAR_RESULTS,
+    }),
 
     onSubmit(e) {
       e.preventDefault();
@@ -71,35 +73,19 @@ export default {
       return false;
     },
 
-    onClear() {
-      this.results = null;
-      this.error = null;
-    },
-
     async doKirtis(input) {
 
       const word = trim(input || this.word);
 
-      this.error = null;
-
       if (!word) {
-        this.results = [];
+        this.clearResults();
         return;
       }
 
       this.busy = true;
 
-      try {
-        this.results = await kirtis.accent(word);
-        this.focusInput();
-      } catch (e) {
-
-        // TODO: error reporting UI
-        this.$error(e.message);
-        this.results = null;
-        this.error = `Žodis <strong>${word}</strong> nerastas`;
-
-      }
+      await this.accentuateWord(word);
+      this.focusInput();
 
       this.busy = false;
 
@@ -124,17 +110,22 @@ export default {
   },
 
   computed: {
+
+    ...mapGetters({
+      results: g.ACCENTUATION_RESULTS,
+      error: g.ACCENTUATION_ERROR,
+    }),
+
     inputIcon() {
       return this.busy ? 'el-icon-loading' : 'el-icon-search';
     },
+
   },
 
   data() {
     return {
       word: '',
-      results: [],
       busy: false,
-      error: null,
     };
   },
 

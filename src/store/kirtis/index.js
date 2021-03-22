@@ -8,6 +8,8 @@ export default {
 
   state: {
     [states.SHORTENINGS]: {},
+    [states.ACCENTUATION_RESULTS]: null,
+    [states.ACCENTUATION_ERROR]: null,
   },
 
   mutations,

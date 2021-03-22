@@ -1,8 +1,8 @@
 <template lang="pug">
 
 .home
-  kirtis(ref="kirtis" @input="onResults")
-  hello-world(v-if="!results" msg="Kirčiavimas internetu")
+  kirtis
+  hello-world(v-if="!results && !error" msg="Kirčiavimas internetu")
 
 </template>
 
@@ -10,6 +10,8 @@
 
 import Kirtis from '@/components/Kirtis.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
+import { mapGetters } from 'vuex';
+import * as g from '@/store/kirtis/getters';
 
 export default {
 
@@ -20,15 +22,10 @@ export default {
     HelloWorld,
   },
 
-  data() {
-    return { results: null };
-  },
-
-  methods: {
-    onResults(results) {
-      this.results = results;
-    },
-  },
+  computed: mapGetters({
+    results: g.ACCENTUATION_RESULTS,
+    error: g.ACCENTUATION_ERROR,
+  }),
 
 };
 
