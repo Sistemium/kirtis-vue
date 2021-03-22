@@ -9,6 +9,10 @@ module.exports = {
     'sistemium-debug',
   ],
 
+  pwa: {
+    themeColor: '#3F51B5',
+  },
+
   productionSourceMap: false,
 
   devServer: {
