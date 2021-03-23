@@ -53,8 +53,8 @@ export default {
 
 @import "../styles/variables";
 
-.result + .result {
-  margin-top: $margin-top;
+.result {
+  margin: $margin-top;
 }
 
 .state, .class {
