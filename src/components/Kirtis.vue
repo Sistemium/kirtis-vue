@@ -85,9 +85,28 @@ export default {
       this.busy = true;
 
       await this.accentuateWord(word);
+      await this.updateRoute(word);
       this.focusInput();
 
       this.busy = false;
+
+    },
+
+    updateRoute(word) {
+
+      const { $route } = this;
+
+      if ($route.query.word === word) {
+        return;
+      }
+
+      const query = word ? { word } : {};
+
+      this.$router.push({
+        ...$route,
+        query,
+      })
+        .catch(e => this.$error(e));
 
     },
 
@@ -131,6 +150,23 @@ export default {
 
   mounted() {
     this.focusInput();
+  },
+
+  created() {
+    const { word } = this.$route.query;
+    if (word) {
+      this.word = word;
+      this.doKirtis()
+        .catch(e => this.$error(e));
+    }
+  },
+
+  watch: {
+    word(newWord, oldWord) {
+      if (oldWord && !newWord) {
+        this.updateRoute();
+      }
+    },
   },
 
 };
