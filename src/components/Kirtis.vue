@@ -34,6 +34,7 @@ form.kirtis()
 </template>
 <script>
 
+import result from 'lodash/result';
 import { mapActions, mapGetters } from 'vuex';
 import trim from 'lodash/trim';
 import SearchInput from '@/components/SearchInput.vue';
@@ -44,6 +45,7 @@ import * as a from '@/store/kirtis/actions';
 import * as g from '@/store/kirtis/getters';
 
 const NAME = 'Kirtis';
+const WORD_PATH = '$route.query.word';
 
 export default {
 
@@ -126,6 +128,17 @@ export default {
       }
     },
 
+    updateWord(word) {
+      this.word = word;
+      const { inputWord } = this.$refs;
+      const input = result(inputWord, '$refs.input.$refs.input.getInput');
+      if (input) {
+        input.value = word || '';
+      }
+      this.doKirtis()
+        .catch(e => this.$error(e));
+    },
+
   },
 
   computed: {
@@ -153,12 +166,13 @@ export default {
   },
 
   created() {
+
     const { word } = this.$route.query;
+
     if (word) {
-      this.word = word;
-      this.doKirtis()
-        .catch(e => this.$error(e));
+      this.updateWord(word);
     }
+
   },
 
   watch: {
@@ -166,6 +180,9 @@ export default {
       if (oldWord && !newWord) {
         this.updateRoute();
       }
+    },
+    [WORD_PATH](word) {
+      this.updateWord(word);
     },
   },
 
