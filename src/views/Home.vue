@@ -38,7 +38,7 @@ export default {
 @import "../styles/variables";
 
 .hello-world {
-  margin-top: $margin-top + 10px;
+  margin: $margin-top + 10px auto;
 }
 
 small {
