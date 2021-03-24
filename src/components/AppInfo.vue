@@ -13,12 +13,11 @@
     | parašė
     = ' '
     a(href="https://sistemium.com" target="_blank") Sistemium UAB
-    = ' '
-    | naudodama
+    | , naudodamasi
     = ' '
     a(href="https://klc.vdu.lt" target="_blank") VDU KLC
     = ' '
-    | technologiją.
+    | technologija.
 
 </template>
 <script>
