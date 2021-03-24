@@ -1,8 +1,10 @@
 <template lang="pug">
 
-#app
-  app-menu
-  router-view
+el-container#app
+  el-header(height="auto")
+    app-menu
+  el-main
+    router-view
 
 </template>
 <script>
@@ -17,5 +19,9 @@ export default {
 <style lang="scss" scoped>
 
 @import "./styles/variables";
+
+.el-main {
+  padding: 0;
+}
 
 </style>

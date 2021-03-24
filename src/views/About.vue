@@ -27,6 +27,9 @@ export default {
   img {
     margin: $margin-top auto;
   }
+  h1 {
+    margin-top: 10px;
+  }
 }
 
 .app-info {
