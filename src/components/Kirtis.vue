@@ -17,7 +17,7 @@ form.kirtis()
     @click="onSubmit"
     type="primary"
     native-type="submit"
-    :disabled="!word"
+    :disabled="!word || busy"
   ) Kirčiuoti
 
   resize(:padding="0")
