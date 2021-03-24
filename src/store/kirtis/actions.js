@@ -11,6 +11,7 @@ export const SAVE_WORD = 'saveWord';
 
 export const SHOW_HISTORY = 'showHistory';
 export const HIDE_HISTORY = 'hideHistory';
+export const CLEAR_HISTORY = 'clearHistory';
 
 export default {
 
@@ -20,6 +21,11 @@ export default {
 
   [HIDE_HISTORY]({ commit }) {
     commit(m.SET_HISTORY_DRAWER, false);
+  },
+
+  [CLEAR_HISTORY]({ commit }) {
+    kirtis.saveHistory([]);
+    commit(m.SET_SAVED_WORDS, []);
   },
 
   async [LOAD_SHORTENINGS]({ commit }) {

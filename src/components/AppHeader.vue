@@ -22,8 +22,16 @@ el-header.app-header(height="auto")
     :size="300"
     :modal="isModal"
   )
+
     resize()
       word-history(@click="onWord")
+
+      el-button#clear-history(
+        @click="clearHistory"
+        type="warning"
+        plain
+        v-if="hasHistory"
+      ) Trinti istoriją
 
 </template>
 <script>
@@ -48,9 +56,13 @@ export default {
   computed: {
     ...mapGetters({
       drawer: g.HISTORY_DRAWER,
+      history: g.SAVED_WORDS,
     }),
     isModal() {
       return this.$vssWidth < 900;
+    },
+    hasHistory() {
+      return !!this.history.length;
     },
   },
   methods: {
@@ -58,6 +70,7 @@ export default {
     ...mapActions({
       handleClose: a.HIDE_HISTORY,
       openDrawer: a.SHOW_HISTORY,
+      clearHistory: a.CLEAR_HISTORY,
     }),
 
     onWord(word) {
@@ -89,6 +102,12 @@ export default {
 
 .word-history {
   padding: 0 $margin-right;
+}
+
+#clear-history {
+  display: block;
+  margin: $margin-right auto;
+  min-width: 200px;
 }
 
 </style>
