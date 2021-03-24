@@ -1,3 +1,5 @@
+import { getHistory } from '@/services/kirtis';
+
 import mutations from './mutations';
 import getters, * as states from './getters';
 import actions from './actions';
@@ -11,7 +13,7 @@ export default {
     [states.ACCENTUATION_RESULTS]: null,
     [states.ACCENTUATION_ERROR]: null,
     [states.HISTORY_DRAWER]: false,
-    [states.SAVED_WORDS]: [],
+    [states.SAVED_WORDS]: getHistory(),
   },
 
   mutations,

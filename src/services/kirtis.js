@@ -5,6 +5,7 @@ import flattenDeep from 'lodash/flattenDeep';
 import { v4 } from 'uuid';
 
 const API_URL = '/api';
+const LS_HISTORY = 'history';
 
 export async function accent(word) {
 
@@ -41,4 +42,25 @@ export async function shortenings() {
   const { data } = await axios.get(`${API_URL}/strp`);
   const res = map(data, shortMapper());
   return flattenDeep(res);
+}
+
+export function saveHistory(history) {
+  localStorage.setItem(LS_HISTORY, JSON.stringify(history || []));
+}
+
+export function getHistory() {
+
+  const data = localStorage.getItem(LS_HISTORY);
+
+  if (!data) {
+    return [];
+  }
+
+  try {
+    return JSON.parse(data);
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+
 }

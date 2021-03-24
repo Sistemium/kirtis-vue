@@ -53,8 +53,14 @@ export default {
   },
 
   [SAVE_WORD]({ commit, getters }, word) {
+
     const words = getters[g.SAVED_WORDS];
-    commit(m.SET_SAVED_WORDS, uniq([word, ...words]));
+    const history = uniq([word, ...words]);
+
+    kirtis.saveHistory(history);
+
+    commit(m.SET_SAVED_WORDS, history);
+
   },
 
 };
