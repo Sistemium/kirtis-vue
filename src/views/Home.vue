@@ -43,6 +43,7 @@ export default {
 
 small {
   color: $gray;
+  font-size: 14px;
 }
 
 </style>

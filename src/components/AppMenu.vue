@@ -24,7 +24,7 @@ export default {
 .app-menu {
 
   padding: $margin-top;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
 
   a {
