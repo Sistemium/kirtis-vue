@@ -4,7 +4,7 @@ import isObject from 'lodash/isObject';
 import flattenDeep from 'lodash/flattenDeep';
 import { v4 } from 'uuid';
 
-const API_URL = '/api/krc';
+const API_URL = '/api';
 
 export async function accent(word) {
 
@@ -12,7 +12,7 @@ export async function accent(word) {
     return null;
   }
 
-  const res = await axios.get(`${API_URL}/${word}`);
+  const res = await axios.get(`${API_URL}/krc/${word}`);
 
   return map(res.data, result => ({
     ...result,
@@ -27,7 +27,7 @@ export async function suggestion(word) {
     return [];
   }
 
-  const res = await axios.get(`api/zodynas/${word}`);
+  const res = await axios.get(`${API_URL}/zodynas/${word}`);
 
   return map(res.data, value => ({ value }));
 
@@ -38,7 +38,7 @@ function shortMapper(label) {
 }
 
 export async function shortenings() {
-  const { data } = await axios.get('api/strp');
+  const { data } = await axios.get(`${API_URL}/strp`);
   const res = map(data, shortMapper());
   return flattenDeep(res);
 }

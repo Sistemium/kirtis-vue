@@ -45,7 +45,7 @@ import * as a from '@/store/kirtis/actions';
 import * as g from '@/store/kirtis/getters';
 
 const NAME = 'Kirtis';
-const WORD_PATH = '$route.query.word';
+const WORD_PATH = '$route.params.word';
 
 export default {
 
@@ -98,16 +98,13 @@ export default {
 
       const { $route } = this;
 
-      if ($route.query.word === word) {
+      if ($route.params.word === word) {
         return;
       }
 
-      const query = word ? { word } : {};
+      const path = word ? `/krc/${word}` : '/';
 
-      this.$router.push({
-        ...$route,
-        query,
-      })
+      this.$router.push({ path })
         .catch(e => this.$error(e));
 
     },
@@ -166,13 +163,7 @@ export default {
   },
 
   created() {
-
-    const { word } = this.$route.query;
-
-    if (word) {
-      this.updateWord(word);
-    }
-
+    this.$watch(WORD_PATH, this.updateWord, { immediate: true });
   },
 
   watch: {
@@ -180,9 +171,6 @@ export default {
       if (oldWord && !newWord) {
         this.updateRoute();
       }
-    },
-    [WORD_PATH](word) {
-      this.updateWord(word);
     },
   },
 

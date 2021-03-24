@@ -6,9 +6,10 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/krc/:word?',
     name: 'Kirtis',
     component: Home,
+    alias: '/',
   },
   {
     path: '/about',
