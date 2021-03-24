@@ -1,4 +1,6 @@
 import Vue from 'vue';
+// import VueCompositionAPI from '@vue/composition-api';
+// import { sync } from 'vuex-router-sync';
 
 import './lib/element-ui';
 import './lib/debug';
@@ -12,7 +14,9 @@ import router from './router';
 import store from './store';
 import App from './App.vue';
 
+// sync(store, router);
 Vue.config.productionTip = false;
+// Vue.use(VueCompositionAPI);
 
 new Vue({
   router,
