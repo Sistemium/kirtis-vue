@@ -1,24 +1,28 @@
 <template lang="pug">
 
-el-container#app
-  el-header(height="auto")
-    app-menu
+el-container#app(direction="vertical")
+  app-header
   el-main
     router-view
 
 </template>
 <script>
 
-import AppMenu from '@/components/AppMenu.vue';
+import AppHeader from '@/components/AppHeader.vue';
 
 export default {
-  components: { AppMenu },
+  components: { AppHeader },
 };
 
 </script>
 <style lang="scss" scoped>
 
 @import "./styles/variables";
+
+#app {
+  max-width: 968px;
+  margin: auto;
+}
 
 .el-main {
   padding: 0;

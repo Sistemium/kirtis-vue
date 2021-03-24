@@ -10,6 +10,8 @@ export default {
     [states.SHORTENINGS]: {},
     [states.ACCENTUATION_RESULTS]: null,
     [states.ACCENTUATION_ERROR]: null,
+    [states.HISTORY_DRAWER]: false,
+    [states.SAVED_WORDS]: [],
   },
 
   mutations,
