@@ -208,8 +208,11 @@ export default {
   max-width: 300px;
 }
 
-.stm-resize > * {
-  margin-top: $margin-top;
+.stm-resize {
+  overflow-y: auto;
+  > * {
+    margin-top: $margin-top;
+  }
 }
 
 </style>
